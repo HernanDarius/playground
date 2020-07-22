@@ -1,6 +1,6 @@
 import sqlite3
 import psycopg2
-from keys.py import elephant_user, elephant_password
+from keys import elephant_user, elephant_password
 
 
 dbname = elephant_user
@@ -25,6 +25,7 @@ FROM charactercreator_character;
 characters = sl_curs.execute(get_characters).fetchall()
 
 create_character_table = """
+DROP TABLE IF EXISTS charactercreator_character;
 CREATE TABLE charactercreator_character (
     character_id SERIAL PRIMARY KEY,
     name VARCHAR(40),
